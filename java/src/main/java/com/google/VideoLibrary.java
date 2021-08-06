@@ -2,6 +2,7 @@ package com.google;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -19,8 +20,8 @@ class VideoLibrary {
   VideoLibrary() {
     this.videos = new HashMap<>();
     try {
-      File file = new File(this.getClass().getResource("/videos.txt").getFile());
-
+    	
+      File file = new File(this.getClass().getResource("videos.txt").getFile());
       Scanner scanner = new Scanner(file);
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
@@ -45,6 +46,19 @@ class VideoLibrary {
   List<Video> getVideos() {
     return new ArrayList<>(this.videos.values());
   }
+  
+    public List<Video> getUnflaggedVideos()
+	{
+		List<Video> unflaggedVids = new ArrayList<>();
+		for ( Video v : this.videos.values() )
+		{
+			if ( !v.getIsFlagged() )
+			{
+				unflaggedVids.add(v);
+			}
+		}
+		return unflaggedVids;
+	}
 
   /**
    * Get a video by id. Returns null if the video is not found.
