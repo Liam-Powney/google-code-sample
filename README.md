@@ -1,0 +1,10 @@
+/*
+
+This coding challenge was completed using Java by Liam Powney.
+
+This is the completed software developer coding challenge as 
+set by the Bright Network Internship experience. 
+It includes full implementation of all desired functionality 
+and passes all JUnit tests.
+
+*/
